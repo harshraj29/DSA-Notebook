@@ -8,8 +8,24 @@ public class power {
         System.out.print("\nEnter N :");
         int n=sc.nextInt();
 
-        System.out.println("Ans = "+ pow(x,n));
+        System.out.println("Ans = "+ optmizedpower(x,n));
+
     }
+
+     public static int optmizedpower(int x,int n){
+        if(n == 0){
+            return 1;
+        }
+
+        int halfpower = optmizedpower(x, n/2);
+        int halfpowersq = halfpower * halfpower;
+
+        if(n%2 != 0){
+            halfpowersq = x * halfpowersq;
+        }
+
+        return halfpowersq;
+     }
 
     public static int pow(int x,int n){
         if(n == 0){

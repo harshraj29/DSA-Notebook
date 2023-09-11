@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
-public class tilting {
+public class tiling  {
     public static void main(String[] args) {
-         Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         System.out.println("Enter a Number : ");
         int n = sc.nextInt();
         int[] arr = new int[n];
@@ -17,7 +17,7 @@ public class tilting {
         System.out.println(first(arr,key,0));
     }
 
-    public static int first(int arr[],int key,int i){
+    public static int tilingProblem(int arr[],int key,int i){
         //base case
         if(i == arr.length){
             return -1;
