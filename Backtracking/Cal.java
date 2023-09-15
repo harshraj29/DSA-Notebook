@@ -23,9 +23,8 @@ public class Cal {
         System.out.print("Enter Value of A : ");
         int b = sc.nextInt();
 
-
         try {
-            double ans = divide(a,b);
+            double ans = divide(a, b);
             System.out.println("Ans: " + ans);
         } catch (abc e) {
             System.err.println("Error: " + e.getMessage());
