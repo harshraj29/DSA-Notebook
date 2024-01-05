@@ -81,11 +81,11 @@ int spaceOptimisedSolution(vector<int>& nums, int n ) {
 
     int rob(vector<int>& nums) {
         int n = nums.size()-1;
-        //return solveUsingRecursion(nums, n);
+        return solveUsingRecursion(nums, n);
 
-        // vector<int> dp(n+1, -1);
-        // return solveUsingMem(nums, n, dp);
-        //return solveUsingTabulation(nums, n);
+        vector<int> dp(n+1, -1);
+        return solveUsingMem(nums, n, dp);
+        return solveUsingTabulation(nums, n);
         return spaceOptimisedSolution(nums, n);
 
     }
