@@ -71,18 +71,18 @@ public:
 
 
     int coinChange(vector<int>& coins, int amount) {
-        // int ans = solveUsingRecursion(coins, amount);
-        // if(ans == INT_MAX)
-        //     return -1;
-        // else
-        //     return ans;
+        int ans = solveUsingRecursion(coins, amount);
+        if(ans == INT_MAX)
+            return -1;
+        else
+            return ans;
 
-        // vector<int> dp(amount+1, -1);
-        // int ans = solveMem(coins,amount, dp);
-        // if(ans == INT_MAX)
-        //     return -1;
-        // else 
-        //     return ans;
+        vector<int> dp(amount+1, -1);
+        int ans = solveMem(coins,amount, dp);
+        if(ans == INT_MAX)
+            return -1;
+        else 
+            return ans;
 
         int ans = solveTab(coins, amount);
         if(ans == INT_MAX)
