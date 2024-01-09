@@ -1,5 +1,3 @@
-import java.util.*;
-
 public class LinkedList {
     public static class Node {
         int data;
@@ -196,21 +194,21 @@ public class LinkedList {
         return slow; // slow is mid node
     }
 
-    public boolean checkPalindrome(){
-        if(head == null || head.next == null){
+    public boolean checkPalindrome() {
+        if (head == null || head.next == null) {
             return true;
         }
 
-        //step 1 find the mid
+        // step 1 find the mid
         Node midNode = findMid(head);
-        
-        //step 2 reverse 2nd half
+
+        // step 2 reverse 2nd half
         Node prev = null;
         Node curr = midNode;
         Node next;
 
-        while(curr != null){
-             next = curr.next;
+        while (curr != null) {
+            next = curr.next;
             curr.next = prev;
             prev = curr;
             curr = next;
@@ -218,16 +216,16 @@ public class LinkedList {
         Node right = prev;
         Node left = head;
 
-        //step 3 check left half & right half
-        while(right != null){
-            if(left.data != right.data){
+        // step 3 check left half & right half
+        while (right != null) {
+            if (left.data != right.data) {
                 return false;
             }
             left = left.next;
             right = right.next;
         }
         return true;
-    } 
+    }
 
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
@@ -267,8 +265,7 @@ public class LinkedList {
         // ll.deleteNthfromEnd(2);
         // ll.print();
 
-
         ll.print();
-        System.out.println("Palindrome: "+ll.checkPalindrome());
+        System.out.println("Palindrome: " + ll.checkPalindrome());
     }
 }
