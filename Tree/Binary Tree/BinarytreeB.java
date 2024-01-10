@@ -95,7 +95,23 @@ public class BinarytreeB {
 
             return depth;
         }
+
+        public static int diameter(Node root){
+            if(root == null){
+                return 0;
+            }
+    
+            int leftDiameter = diameter(root.left);
+            int leftHeight = height(root.left);
+            int rightDiameter = diameter(root.right);
+            int rightHeight = height(root.right);
+    
+            int selfDiameter = leftHeight + rightHeight + 1 ;
+    
+            return Math.max(selfDiameter , Math.max(leftDiameter , rightDiameter));
+        }
     }
+
 
     public static void main(String[] args) {
         int Nodes[] = {1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1};
@@ -108,6 +124,6 @@ public class BinarytreeB {
 
         // tree.levelorder(root);
 
-        System.out.println(tree.height(root));
+        System.out.println(tree.diameter(root));
     }
 }
