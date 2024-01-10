@@ -12,12 +12,12 @@ public class BinarytreeB {
         }
     }
 
-    static class Binarytree {
+    static class BinaryTree {
         static int idx = -1;
 
         public static Node buildTree(int nodes[]) {
             idx++;
-            if (nodes[idx] == -1) {
+            if (idx >= nodes.length || nodes[idx] == -1) {
                 return null;
             }
 
@@ -57,22 +57,57 @@ public class BinarytreeB {
             System.out.print(root.data + " ");
         }
 
-        public static Node levelorder(Node root) {
+        public static void levelorder(Node root) {
+            if (root == null) {
+                return;
+            }
             Queue<Node> q = new LinkedList<>();
-             
+            q.add(root);
+            q.add(null);
+
+            while (!q.isEmpty()) {
+                Node currNode = q.remove();
+                if (currNode == null) {
+                    System.out.println();
+                    if (q.isEmpty()) {
+                        break;
+                    } else {
+                        q.add(null);
+                    }
+                } else {
+                    System.out.print(currNode.data + " ");
+                    if (currNode.left != null) {
+                        q.add(currNode.left);
+                    }
+                    if (currNode.right != null) {
+                        q.add(currNode.right);
+                    }
+                }
+            }
+        }
+
+        public static int height(Node root){
+            if(root==null)return 0;
+            int lh = height(root.left);
+            int rh = height(root.right);
+
+            int depth = Math.max(lh,rh)+1;
+
+            return depth;
         }
     }
 
     public static void main(String[] args) {
-        int Nodes[] = { 1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1 };
-        Binarytree tree = new Binarytree();
+        int Nodes[] = {1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1};
+        BinaryTree tree = new BinaryTree();
         Node root = tree.buildTree(Nodes);
-        // System.out.println(root.data);
 
         // tree.preorder(root);
         // tree.inorder(root);
+        // tree.postorder(root);
 
-        tree.postorder(root);
+        // tree.levelorder(root);
+
+        System.out.println(tree.height(root));
     }
-
 }
