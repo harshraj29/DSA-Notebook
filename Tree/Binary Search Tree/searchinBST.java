@@ -1,5 +1,4 @@
-public class BST {
-    
+public class searchinBST {
     static class Node{
         int data;
         Node left;
@@ -55,46 +54,24 @@ public class BST {
         inorder(root.right);
     }
 
-    public static Node delete(Node root,int value){
-        if(root.data < value){
-            root.right = delete(root.right, value);
+    public static void printInRange(Node root,int k1,int k2){
+        if(root == null){
+            return;
         }
-        else if(root.data > value){
-            root.left = delete(root.left ,value);
+
+        if(root.data >= k1 && root.data <= k2){
+            printInRange(root.left, k1, k2);
+            System.out.print(root.data+" ");
+            printInRange(root.right, k1, k2);
+        }
+        else if(root.data < k1){
+            printInRange(root.left, k1, k2);
         }
         else{
-            //case 1 - leaf Node
-            if(root.left==null && root.right==null){
-                return null;
-            }
-
-            //case 2 - single Child
-            if (root.left == null) {
-                return root.right;
-            } else if (root.right == null) {
-                return root.left;
-            }
-
-
-            //case 3 - both child
-
-            Node IS = findInorderSuccessor(root.right);
-            root.data = IS.data;
-            root.right = delete(root.right, IS.data);
-            
+            printInRange(root.right, k1, k2);
         }
-        return root;
     }
 
-
-    public static Node findInorderSuccessor(Node root){
-        while (root.left != null) {
-            root = root.left;
-
-        }
-
-        return root;
-    }
 
     public static void main(String[] args) {
         int value[] = {8,5,3,1,4,6,10,11,14};
@@ -104,16 +81,10 @@ public class BST {
             root = insert(root,value[i]);
         }
 
-        inorder(root);
+        // inorder(root);
 
-        // System.out.println(Search(root, 2));
-
-        System.out.println();
-
-
-        root = delete(root, 10);
-        inorder(root);
         
+        printInRange(root, 5, 12);
 
     }
 }
