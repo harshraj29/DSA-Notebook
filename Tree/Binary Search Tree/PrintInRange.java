@@ -1,4 +1,4 @@
-public class searchinBST {
+public class PrintInRange {
     static class Node{
         int data;
         Node left;
