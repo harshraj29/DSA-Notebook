@@ -227,3 +227,39 @@ public class Main {
         System.out.println();
     }
 }
+
+
+
+//Linear Probing 
+Map<Integer,Integer> hm = new HashMap<>();
+        
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        for(int i = 0 ; i<n; i++)
+        {
+            int num = sc.nextInt();
+            int key = num%5;
+            
+            while(hm.containsKey(key)==true)
+            {
+                key++;
+            }
+            hm.put(key,num);
+        }
+        System.out.print(hm);
+
+for (int i = 0; i < n; i++) {
+            int num = sc.nextInt();
+            int key = num % 7;
+
+            // Quadratic probing
+            int k = 1;
+            int originalKey = key;
+
+            while (hm.containsKey(key)) {
+                key = (originalKey + k * k) % 7;
+                k++;
+            }
+
+            hm.put(key, num);
+        }
